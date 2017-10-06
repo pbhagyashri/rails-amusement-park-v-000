@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :rides
 
   root 'welcome#home'
+
+  get 'signin' => 'sessions#new', as: :login
+  post 'sessions/create' => 'sessions#create', as: :sessions
 end
