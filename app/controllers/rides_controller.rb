@@ -6,6 +6,7 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.create(ride_params)
     user = User.find_by(id: session[:user_id])
+    binding.pry
     redirect_to user_path(user)
   end
 
