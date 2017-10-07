@@ -1,5 +1,13 @@
 <h2>Attractions</h2>
 
 <% @attractions.each do |attr| %>
-  <h4><%= link_to "Go on #{attr.name}", attraction_path(attr) %></h4>
+  <% current_user = User.find_by(id: session[:user_id]) %>
+  <% if current_user.admin == false%>
+    <h4><%= link_to "Go on #{attr.name}", attraction_path(attr) %></h4>
+  <% else %>
+
+    <h4> Show <%= attr.name%></h4>
+  <% end %>
 <% end %>
+
+<%= link_to "New Attraction", new_attraction_path%>

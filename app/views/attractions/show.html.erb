@@ -1,25 +1,18 @@
 <h3>attractions show page</h3>
 
-<h4>Current User <%= User.find_by(id: session[:user_id]).name %></h4>
-<h4>Current User <%= User.find_by(id: session[:user_id]).id %></h4>
+<h4>Name: <%= @attraction.name %></h4>
+<h5>Min Height: <%= @attraction.min_height %></h5>
+<h5>Happiness Rating: <%= @attraction.happiness_rating %></h5>
+<h5>Nausea Rating: <%= @attraction.nausea_rating %></h5>
+<h5>Tickets: <%= @attraction.tickets %></h5>
 
+
+<% current_user = User.find_by(id: session[:user_id]) %>
 
 <%= form_for(@ride) do |f| %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :tickets %>
-  <%= f.text_field :tickets %>
-
-  <%= f.label :nausea_rating %>
-  <%= f.text_field :nausea_rating %>
-
-  <%= f.label :happiness_rating %>
-  <%= f.text_field :happiness_rating %>
-
-  <%= f.label :min_height %>
-  <%= f.text_field :min_height %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :attraction_id, :value => @attraction.id %>
 
   <%= f.submit value="Go on this ride" %>
 <% end %>

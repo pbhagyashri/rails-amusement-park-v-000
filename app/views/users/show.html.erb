@@ -1,11 +1,14 @@
-Name <%= @user.name %><br>
-Mood <%= @user.mood %><br>
-<%= @user.happiness %><br>
-tickets <%= @user.tickets %><br>
-height <%= @user.height %><br>
-ADMIN<%= @user.admin %><br><br><br>
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
 
-<!-- <h3> See attractions </h3> -->
+Name: <%= @user.name %><br>
+Mood: <%= @user.mood %><br>
+Happiness: <%= @user.happiness %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %><br>
+ADMIN: <%= @user.admin %><br><br><br>
+
 <%= link_to "See attractions", attractions_path %><br>
 
 <%= link_to "Log Out", user_path(@user), :method => "delete"  %>
