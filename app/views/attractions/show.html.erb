@@ -1,0 +1,25 @@
+<h3>attractions show page</h3>
+
+<h4>Current User <%= User.find_by(id: session[:user_id]).name %></h4>
+<h4>Current User <%= User.find_by(id: session[:user_id]).id %></h4>
+
+
+<%= form_for(@ride) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :tickets %>
+  <%= f.text_field :tickets %>
+
+  <%= f.label :nausea_rating %>
+  <%= f.text_field :nausea_rating %>
+
+  <%= f.label :happiness_rating %>
+  <%= f.text_field :happiness_rating %>
+
+  <%= f.label :min_height %>
+  <%= f.text_field :min_height %>
+
+  <%= f.submit value="Go on this ride" %>
+<% end %>
