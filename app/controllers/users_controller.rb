@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if params[:user][:admin] == "true"
+      @user.admin = true
+      @user.save
+    end
     if @user.save
       @user.name = params[:user][:name]
       @user.password = params[:user][:password]
